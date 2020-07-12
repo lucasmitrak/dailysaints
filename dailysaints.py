@@ -12,7 +12,8 @@ class Scrape:
         html_doc=requests.get(self.url)
         soup=BeautifulSoup(html_doc.text, 'html.parser')
         text=soup.find(id='textlines').get_text()
-        print(text)
+        if text and (not text.isspace()):
+            print(text)
 
     def getTarget(self):
         now=datetime.datetime.now()
